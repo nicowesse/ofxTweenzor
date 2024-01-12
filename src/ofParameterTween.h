@@ -28,6 +28,8 @@ class ofParameterTween : public Tween
 		{
 			_type = typeid(ofParameter<T>).name();
 		}
+  
+    float* getProperty() { return &_rat; }
 	
 		virtual void update(int a_millis);
 };

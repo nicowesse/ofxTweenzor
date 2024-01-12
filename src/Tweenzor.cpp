@@ -94,8 +94,9 @@ void Tweenzor::update(int a_millis) {
 Tween* Tweenzor::add(float* a_property, float a_begin, float a_end, int a_delay, int a_duration, int a_easeType, float a_p, float a_a) {
 	removeCompleteListener( a_property );
 	removeTween( a_property );
-	shared_ptr<Tween> tweenzlebob = shared_ptr<Tween>(new Tween( a_property, __instance->_currMillis, a_begin, a_end, a_delay, a_duration, a_easeType, a_p, a_a ));
-	__instance->_tweens.push_back( tweenzlebob );
+  
+	auto tweenzlebob = make_shared<Tween>(a_property, __instance->_currMillis, a_begin, a_end, a_delay, a_duration, a_easeType, a_p, a_a);
+	__instance->_tweens.push_back(tweenzlebob);
   
   return tweenzlebob.get();
 }
